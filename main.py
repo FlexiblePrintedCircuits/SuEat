@@ -14,8 +14,8 @@ import json
 app = Flask(__name__)
 app.debug = False
 
-line_bot_api = LineBotApi('ZqXNePJDB0oYTeccqhUaE53ItMAUSZn2aCTRYF8p8ObSuNMtmzjdBy700HLPfX/1BeQzAOFXDLFpYQCZNvCSR2eA7mDbTA4a+eNb8En9qFjTUi1IYhBYaoe/hqHZ6PO0FCvNfxlJTll63a3XosicaQdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('df55dbbc1dee5d9dab31e47db840c3f0')
+line_bot_api = LineBotApi('TOKEN')
+handler = WebhookHandler('KEY')
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -49,7 +49,7 @@ def handle_location_message(event):
         with urllib.request.urlopen(req) as response:
             result = response.read()
     except:
-        print("ƒAƒNƒZƒX‚É¸”s‚µ‚Ü‚µ‚½B")
+        print("ã‚¢ã‚¯ã‚»ã‚¹ã«å¤±æ•—ã—ã¾ã—ãŸã€‚")
         return
 
     columns = []
@@ -65,10 +65,10 @@ def handle_location_message(event):
             CarouselColumn(
                 thumbnail_image_url="https://sueat.sikeserver.com/image.php?restaurant=" + id,
                 title=name,
-                text="¬G“xF–ñ" + congestion + "l/10•ª\n" + "‹——£F–ñ" + distance + "m",
+                text="æ··é›‘åº¦ï¼šç´„" + congestion + "äºº/10åˆ†\n" + "è·é›¢ï¼šç´„" + distance + "m",
                 actions=[
-                    {"type": "postback", "label": "’n}", "data": "M" + id},
-                    {"type": "postback", "label": "’n}‚ğ•\¦", "data": "C" + id}
+                    {"type": "postback", "label": "åœ°å›³", "data": "M" + id},
+                    {"type": "postback", "label": "åœ°å›³ã‚’è¡¨ç¤º", "data": "C" + id}
                 ]
             )
         )
@@ -83,7 +83,7 @@ def handle_location_message(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 #    if event.type == "message":
-        if (event.message.text == "ˆÊ’uÀ•W"):
+        if (event.message.text == "ä½ç½®åº§æ¨™"):
             line_bot_api.reply_message(
                 event.reply_token,
                 [
@@ -105,7 +105,7 @@ def handle_postback(event):
             with urllib.request.urlopen(req) as response:
                 result = response.read()
         except:
-            print("ƒAƒNƒZƒX‚É¸”s‚µ‚Ü‚µ‚½B")
+            print("ã‚¢ã‚¯ã‚»ã‚¹ã«å¤±æ•—ã—ã¾ã—ãŸã€‚")
             return
 
         columns = []
